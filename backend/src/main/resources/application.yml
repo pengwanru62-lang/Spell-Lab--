@@ -1,0 +1,50 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spelllab-backend
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      max-lifetime: 300000
+      idle-timeout: 120000
+      keepalive-time: 60000
+      validation-timeout: 5000
+      connection-timeout: 30000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+  mail:
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration-minutes: ${JWT_EXPIRE_MINUTES}
+
+ai:
+  bailian:
+    # 配置 Bailian 模型的 APP_ID
+    app-id: ${BAILIAN_APP_ID}
+    # 配置是否启用 Bailian 模型
+    enabled: ${BAILIAN_ENABLED}
+    # 配置 Bailian 模型的 API 地址    
+    endpoint: ${BAILIAN_ENDPOINT}
+    api-key: ${BAILIAN_API_KEY}
+    model: ${BAILIAN_MODEL}
